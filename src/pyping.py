@@ -24,7 +24,7 @@ if __name__ == '__main__':
         print("Incorrect option")
 
     #startIp = input("Please enter a start ip example 192.168.1: ")
-    endIp = input("Please enter a end ip example 31: ")
+    endIp = input("Please enter a end ip example xx.yy: ")
     numberOfSessions = input("Please enter range of windows to open: ")
     for i in range(int(numberOfSessions)):
         process = multiprocessing.Process(target=ping, args= (startIp, int(endIp) + int(i)))
