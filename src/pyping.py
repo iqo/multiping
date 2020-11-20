@@ -1,5 +1,6 @@
 import os
 import multiprocessing
+import time
 def default():
     print("invalid option")
     
@@ -22,11 +23,15 @@ if __name__ == '__main__':
         startIp = "10.47"
     else:
         print("Incorrect option")
+        exit()
 
     #startIp = input("Please enter a start ip example 192.168.1: ")
     endIp = input("Please enter a end ip example xx.yy: ")
     numberOfSessions = input("Please enter range of windows to open: ")
     for i in range(int(numberOfSessions)):
-        process = multiprocessing.Process(target=ping, args= (startIp, int(endIp) + int(i)))
+        #print( round(float(i/100),2))
+        newEndIp = ("%.2f" % (float(endIp) + round(float(i/100),2)))
+        process = multiprocessing.Process(target=ping, args= (startIp, newEndIp))
         #jobs.append(process)
         process.start()
+        time.sleep(0.3)
