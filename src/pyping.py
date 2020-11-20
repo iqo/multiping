@@ -21,11 +21,12 @@ if __name__ == '__main__':
     else:
         print("Incorrect option")
         exit()
-
-    endIp = input("Please enter kds end ip example xx.yy: ")
+    restaurantIp = input("Please enter restaurant(Exemple Mall of Scandinavia: 104): ")
+    endIp = input("Please enter IP range(Example, 21 or 31 for KDS01): ")
     numberOfSessions = input("Please enter range of windows to open: ")
     for i in range(int(numberOfSessions)):
-        newEndIp = ("%.2f" % (float(endIp) + round(float(i/100),2)))
+        #newEndIp = restaurantIp + str(".") + ("%.2f" % (float(endIp) + round(float(i/100),2)))
+        newEndIp = str(restaurantIp) + str(".") + str((int(endIp) + int(i)))
         process = multiprocessing.Process(target=ping, args= (startIp, newEndIp))
         #jobs.append(process)
         process.start()
